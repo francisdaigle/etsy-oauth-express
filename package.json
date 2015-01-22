@@ -1,0 +1,24 @@
+{
+  "name": "etsy-oauth-express",
+  "version": "1.0.0",
+  "description": "Example code for authenticating against Etsy v2 API using Express and OAuth.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.10.0",
+    "express-session": "1.10.1",
+    "oauth": "~0.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/francisdaigle/etsy-oauth-express.git"
+  },
+  "keywords": [
+    "etsy, oauth, express"
+  ],
+  "author": "Francis Daigle",
+  "license": "WTFPL"
+}
