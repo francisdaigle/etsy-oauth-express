@@ -7,7 +7,8 @@ Installation
 ==============
 
 1. Install dependencies and run
+```
     $ npm install
     $ node server.js
-
-2. Navigate to http://localhost:3001npm install
+```
+2. Navigate to [http://localhost:3001](http://localhost:3001)
