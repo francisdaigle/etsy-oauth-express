@@ -10,12 +10,14 @@ var app = express();
 // Setup the Express server
 var server = http.createServer(app);
 
+// Initialize Express Session
 app.use(session({
     saveUninitialized: true,
     secret: "1234567890",
     resave: true
 }));
 
+// Add static directory
 app.use(express.static(__dirname + '/public'));
 
 // Set Etsy temporary credentials
@@ -77,8 +79,6 @@ app.get('/get-access-token', function(req, res) {
 // Get OAuth access token on callback
 app.get('/callback', function(req, res) {
 
-    res.sendFile(__dirname + '/public/success.html');
-
     console.log('*** callback ***')
 
     if (req.session.oauth) {
@@ -90,7 +90,6 @@ app.get('/callback', function(req, res) {
             req.session.oauth.token_secret,
             req.session.oauth.verifier,
             function( error, token, token_secret, results ){
-
                 if (error){
                     console.log(error);
                 } else {
@@ -118,11 +117,15 @@ function test(req, res) {
         req.session.oauth.access_token,
         req.session.oauth.access_token_secret,
         function (error, data, response) {
-            console.log(data);
+            if (error){
+                console.log(error);
+            } else {
+                console.log(data);
+                console.log('*** SUCCESS! ***');
+                res.sendFile(__dirname + '/public/success.html');
+            }
         }
     );
-
-    console.log('*** SUCCESS! ***');
 }
 
 server.listen(3001);
